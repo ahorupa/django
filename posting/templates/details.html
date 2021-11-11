@@ -1,0 +1,113 @@
+{% include 'navigation.html' %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>K LAB Blog </title>
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/bulma-divider.min.css">
+
+<style>
+    nav.navbar {
+        height: 6rem !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
+    }
+</style>
+<div class="section-light about-me" id="about-me">
+    <div class="container">
+        <div class="column is-12 about-me">
+            <h1 class="title has-text-centered section-title"></h1>
+        </div>
+        <div class="columns is-multiline">
+            <div class="column is-6 has-vertically-aligned-content" data-aos="fade-right">
+                <p class="is-larger">
+                    &emsp;&emsp;<strong>{{datas.title}}.</strong
+                >
+              </p>
+              <br />
+              <p>
+                {{datas.Description}}
+              </p>
+              <br />
+              <div class="is-divider"></div>
+              <div class="columns about-links">
+                <div class="column">
+                  <p class="heading">
+                    <strong> Posted on {{datas.posted_on}}</strong>
+                </p>
+            </div>
+            <div class="column">
+                <p class="heading">
+                    <strong> Posted by: {{datas.Editor}}</strong>
+                </p>
+            </div>
+            <div class="column">
+
+                <p class="subheading">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="column is-6 right-image " data-aos="fade-left">
+        <img src='{{datas.images.url}}' class="is-rounded" src="https://picsum.photos/id/366/600/375" alt="" />
+    </div>
+    <form>
+
+        <hr> {% if not data.comments.all%}
+        <p> No Comment yet </p>
+        {% else %}
+        <p>{% for comment in data.comments.all %} comments = datas.comments.all()[:3]
+        </p>
+    </form>
+</div>
+</section>
+</form>
+
+<!-- comment Box to loop in -->
+
+<div class="column is-9">
+    <div class="box content">
+        <article class="post">
+            <h4>{{comment.body}}</h4>
+            <div class="media">
+                </p>
+            </div>
+            <div class="media-content">
+                <div class="content">
+                    <a href="#">{{comment.name }}</a>
+                    <span>Commented{{comment.igihe|timesince}}
+                    &nbsp;
+                    </span>
+                </div>
+            </div>
+            <div class="media-right">
+                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+            </div>
+    </div>
+    </article>
+
+</div>
+</div>
+</div>
+{% endfor %} {% endif %}
+</section>
+<div class="box content">
+    <div class="container">
+
+        <section>
+            <form method="post">
+                {% csrf_token %} {{comment_form.as_p}}
+                <button>commment </button>
+            </form>
+        </section>
+    </div>
+</div>
+</div>
+</div>
+<!-- <form method="POST" ,action=".">
+    {% csrf_token %} {{form.as_p}}
+    <button>commment </button>
+</form> -->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% include 'navigation.html' %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    {% for pos in post %}
+    
+    <div class="column is-4" style="float:left">
+          <div class="card is-shady">
+          <a href="{% url 'detail' pos.id%} ">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src='{{pos.images.url}}'> alt="Placeholder image" class="modal-button" data-target="modal-image2">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <h4>{{pos.title}}</h4>
+                </a>
+                <p>{{pos.posted_on}}</p>
+                <p>{{pos.Editor}} </p>
+                <br>
+                <a href="{% url 'detail' pos.id%} ">
+                <span class="button is-link modal-button" data-target="modal-image2">Read more</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+   {% comment %} <strong> <a href='{% url 'detail' pos.id %}'><h1>{{pos.title}} <h1></a></strong>
+    <br>
+    <p>Posted on {{pos.posted_on|timesince}} </p>
+  <a href=''><img src='{{pos.images.url}}'></a> {% endcomment %}
+  {% endfor %}
+
+
+    
